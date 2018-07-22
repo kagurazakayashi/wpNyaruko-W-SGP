@@ -1,0 +1,1 @@
+console.log("已加载 WSGP 扩展包。");
