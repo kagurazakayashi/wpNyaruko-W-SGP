@@ -24,5 +24,34 @@ function nyarukoWSGPHead() {
 add_action("admin_head","nyarukoWSGPHead");
 function nyarukoWSGPpostlistblock($indexint) {
     echo "plug_wsgp_installed".$indexint;
+    // TODO: FUNC:L256
+}
+function nyarukoWSGPmetabox() {
+    return array(
+        "nya_wsgp_freeshipping" => array(
+          "name" => "_nya_wsgp_freeshipping",
+          "std" => "包邮",
+          "title" => "包邮：（不填字隐藏）"),
+        "nya_wsgp_price" => array(
+          "name" => "_nya_wsgp_price",
+          "std" => "0.00",
+          "title" => "原价："),
+        "nya_wsgp_concessionary" => array(
+          "name" => "_nya_wsgp_concessionary",
+          "std" => "0.00",
+          "title" => "优惠后价："),
+        "nya_wsgp_pre" => array(
+          "name" => "_nya_wsgp_pre",
+          "std" => "0.00",
+          "title" => "优惠力度："),
+        "nya_wsgp_salesvol" => array(
+          "name" => "_nya_wsgp_salesvol",
+          "std" => "0",
+          "title" => "销量："),
+        "nya_wsgp_url" => array(
+          "name" => "_nya_wsgp_url",
+          "std" => "http://",
+          "title" => "购买/领劵地址：")
+    );
 }
 ?>
