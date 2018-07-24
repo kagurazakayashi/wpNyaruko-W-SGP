@@ -21,10 +21,34 @@ function nyarukoWSGPHead() {
     echo '<link href="'.NYARUKOWSGP_PLUGIN_URL.'/nyarukowsgp.css" rel="stylesheet">';
     echo '<script type="text/javascript" src="'.NYARUKOWSGP_PLUGIN_URL.'/nyarukowsgp.js"></script>';
 }
-add_action("admin_head","nyarukoWSGPHead");
+nyarukoWSGPHead();
+// add_action("admin_head","nyarukoWSGPHead");
 function nyarukoWSGPpostlistblock($indexint) {
-    echo "plug_wsgp_installed".$indexint;
-    // TODO: FUNC:L256
+    ?>
+    <div id="blockbdiv<?php echo $indexint ?>" class="blockbdiv" onclick="blockbdivclick(<?php echo "'".$indexint."','"; the_permalink(); echo "'"; ?>)" onmouseover="blockbdivblur(<?php echo $indexint ?>)" onmouseout="blockbdivfocus(<?php echo $indexint ?>)">
+      <div name="blocktopdiv" id="blocktopdiv<?php echo $indexint ?>" class="blocktopdiv">
+        <img name="blocktopimg" id="blocktopimg<?php echo $indexint ?>" src="<?php 
+          $itemimage = catch_that_image();
+          if ($itemimage == "") {
+            bloginfo("template_url");
+            echo "/images/default.jpg";
+          } else {
+            echo $itemimage;
+          }
+          ?>" alt="<?php the_title(); ?>" />
+          <?php $category = end(get_the_category()); 
+          $cid = $category->term_id;
+          echo $cid;
+          ?>
+          <div class="topline"><?php the_time('Y-m-d') ?>&nbsp;</div>
+          <div class="toptags"><?php echo '<a href="'.get_category_link($cid).'">'.$category->cat_name.'</a>'; ?></div>
+      </div>
+      <div class="blockbottomdiv">
+        <div class="bottomtitle"><?php the_title(); ?></div>
+        <div class="bottomcontent"><?php the_excerpt(); ?></div>
+      </div>
+    </div>
+    <?php
 }
 function nyarukoWSGPmetabox() {
     return array(
@@ -44,6 +68,10 @@ function nyarukoWSGPmetabox() {
           "name" => "_nya_wsgp_pre",
           "std" => "0.00",
           "title" => "优惠力度："),
+        "nya_wsgp_cnum" => array(
+          "name" => "_nya_wsgp_cnum",
+          "std" => "0",
+          "title" => "优惠券数量："),
         "nya_wsgp_salesvol" => array(
           "name" => "_nya_wsgp_salesvol",
           "std" => "0",
