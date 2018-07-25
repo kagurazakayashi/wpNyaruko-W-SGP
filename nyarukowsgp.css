@@ -3,18 +3,77 @@
 }
 .blockbdiv {
     height: 500px !important;
-    background-image: -webkit-gradient(linear, 0 100%, 100% 0,
-                            color-stop(.25, rgba(255, 255, 255, .5)), color-stop(.25, transparent),
-                            color-stop(.5, transparent), color-stop(.5, rgba(255, 255, 255, .5)),
-                            color-stop(.75, rgba(255, 255, 255, .5)), color-stop(.75, transparent),
-                             to(transparent));
-    background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, .5) 25%, transparent 25%,
-                        transparent 50%, rgba(255, 255, 255, .5) 50%, rgba(255, 255, 255, .5) 75%,
-                        transparent 75%, transparent);
-    background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, .5) 25%, transparent 25%,
-                        transparent 50%, rgba(255, 255, 255, .5) 50%, rgba(255, 255, 255, .5) 75%,
-                        transparent 75%, transparent);
-    background-image: linear-gradient(45deg, rgba(255, 255, 255, .5) 25%, transparent 25%,
-                        transparent 50%, rgba(255, 255, 255, .5) 50%, rgba(255, 255, 255, .5) 75%,
-                        transparent 75%, transparent);
+}
+.nya_wsgp_title {
+    font-size: 10pt;
+}
+.nya_wsgp_freeshipping span {
+    position: absolute;
+    background-color: #FE99CC;
+    color: #FFF;
+    font-size: 10pt;
+    width: 50px;
+    text-align: center;
+    line-height: 20px;
+    height: 20px;
+    border-radius:20px;
+}
+.nya_wsgp_freeshipping_s {
+    font-size: 12pt;
+    color: #CC00FF;
+}
+.nya_wsgp_freeshipping_l {
+    font-size: 14pt;
+    color: #CC00FF;
+}
+.nya_wsgp_freeshipping_oldp {
+    font-size: 10pt;
+    color: gray;
+    text-decoration: line-through;
+}
+.nya_wsgp_cnum {
+    background-color: #FE99CC;
+    border: 2px dotted #FFF;
+    color: #FFF;
+    line-height: 40px;
+    font-size: 12pt;
+}
+.nya_wsgp_cnuma {
+    border-right: none;
+}
+.nya_wsgp_salesvol {
+    font-size: 10pt;
+    color: gray;
+}
+.nya_wsgp_qrbox {
+    position: relative;
+    float: right;
+    width: 100px;
+    height: 100px;
+    text-align: right;
+    padding: 2px;
+    background-color: #FFF;
+    background-image:linear-gradient(#FFF,#FFF)
+    ,linear-gradient(to left,#FE99CC 33.3%,transparent 0,transparent 66.6%  , #FE99CC 0)
+    ,linear-gradient(#FE99CC 33.3%,transparent 0,transparent 66.6%  , #FE99CC 0)
+    ,linear-gradient(to right,#FE99CC 33.3%,transparent 0,transparent 66.6%  , #FE99CC 0)
+    ,linear-gradient(to bottom,#FE99CC 33.3%,transparent 0,transparent 66.6%  , #FE99CC 0);
+    background-clip: content-box,border-box,border-box,border-box,border-box;
+    background-position: 0 0,0 0,100% 0,0 100%,0;
+    background-size: 100%,100% 5px,5px 100%,100% 5px,5px 100%;
+    background-repeat: repeat,no-repeat,no-repeat,no-repeat,no-repeat; 
+}
+.nya_wsgp_qr {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    color: lightgray;
+}
+.nya_wsgp_qrboxinfo {
+    position: relative;
+    float: right;
+    width: 100%;
+    text-align: center;
+    font-size: 10pt;
+    color: #FE99CC;
 }

@@ -36,7 +36,9 @@ function nyarukoWSGPpostlistblock($indexint) {
             echo $itemimage;
           }
           ?>" alt="<?php the_title(); ?>" />
-          <?php $category = end(get_the_category()); 
+
+          <?php $category = get_the_category(); //反馈回W
+          $category = end($category); 
           $cid = $category->term_id;
           echo $cid;
           ?>
@@ -44,8 +46,37 @@ function nyarukoWSGPpostlistblock($indexint) {
           <div class="toptags"><?php echo '<a href="'.get_category_link($cid).'">'.$category->cat_name.'</a>'; ?></div>
       </div>
       <div class="blockbottomdiv">
-        <div class="bottomtitle"><?php the_title(); ?></div>
-        <div class="bottomcontent"><?php the_excerpt(); ?></div>
+        <?php 
+        $nya_wsgp_freeshipping = get_post_meta($cid, '_nya_wsgp_freeshipping_value', true); //包邮
+        $nya_wsgp_price = round(floatval(get_post_meta($cid, '_nya_wsgp_price_value', true)),2); //原价
+        $nya_wsgp_pre = round(floatval(get_post_meta($cid, '_nya_wsgp_pre_value', true)),2); //优惠力度
+        $nya_wsgp_concessionary = round(($nya_wsgp_price - $nya_wsgp_pre),2); //round(floatval(get_post_meta($cid, '_nya_wsgp_concessionary_value', true)),2); //优惠后价
+        $nya_wsgp_cnum = intval(get_post_meta($cid, '_nya_wsgp_cnum_value', true)); //优惠券数量
+        $nya_wsgp_salesvol = intval(get_post_meta($cid, '_nya_wsgp_salesvol_value', true)); //销量
+        $nya_wsgp_url = get_post_meta($cid, '_nya_wsgp_url_value', true); //地址
+        $isconcessionary = false;
+        if ($nya_wsgp_price > $nya_wsgp_concessionary) {
+            $isconcessionary = true;
+        }
+        ?>
+        <p><span class="nya_wsgp_qrbox">
+            <span class="nya_wsgp_qr">二维码预留<br/>二维码预留<br/>二维码预留<br/>二维码预留</span>
+            <span class="nya_wsgp_qrboxinfo">手机扫码或保<br/>存到相册识别</span>
+        </span></p>
+        <div class="nya_wsgp_title"><p><?php the_title(); ?></p></div>
+        <!-- <div class="bottomcontent"><?php the_excerpt(); ?></div> -->
+        <?php
+        if ($nya_wsgp_freeshipping != "") {
+            echo '<div class="nya_wsgp_freeshipping"><span>'.$nya_wsgp_freeshipping.'</span></div>';
+        }
+        ?>
+        <br/><span class="nya_wsgp_freeshipping_s">￥</span><span class="nya_wsgp_freeshipping_l"><?php
+        echo sprintf("%.2f",$nya_wsgp_concessionary);
+        ?></span><?php
+        if ($isconcessionary) echo '<span class="nya_wsgp_freeshipping_s">券后价&emsp;</span><span class="nya_wsgp_freeshipping_oldp">￥'.sprintf("%.2f",$nya_wsgp_price).'</span>';
+        ?><br/><?php
+        if ($isconcessionary) echo '<span class="nya_wsgp_cnum nya_wsgp_cnuma">&nbsp;券&nbsp;</span><span class="nya_wsgp_cnum nya_wsgp_cnumb">&nbsp;￥'.sprintf("%.2f",$nya_wsgp_pre).'&nbsp;</span>&emsp;';
+        ?><span class="nya_wsgp_salesvol">销量:<?php echo $nya_wsgp_salesvol; ?></span>
       </div>
     </div>
     <?php
